@@ -1,0 +1,22 @@
+[Unit]
+Description=Slemanium's distributed currency daemon
+After=network.target
+
+[Service]
+User=slemanium
+Group=slemanium
+
+Type=forking
+PIDFile=/var/lib/slemaniumd/slemaniumd.pid
+ExecStart=/usr/bin/slemaniumd -daemon -pid=/var/lib/slemaniumd/slemaniumd.pid \
+-conf=/etc/slemanium/slemanium.conf -datadir=/var/lib/slemaniumd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

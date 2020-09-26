@@ -1,0 +1,7 @@
+find ./ -type f -readable -writable -exec sed -i "s/slemanium/slemanium/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/Slemanium/Slemanium/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/SlemanNium/SlemanNium/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/SLEMANIUM/SLEMANIUM/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/slemaniumd/slemaniumd/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/SLN/SLN/g" {} ";"
+find ./ -type f -readable -writable -exec sed -i "s/sln/sln/g" {} ";"

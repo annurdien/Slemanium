@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016 The Bitcoin Core developers
+# Copyright (c) 2016 The Slemanium Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test Wallet encryption"""
 
 import time
 
-from test_framework.test_framework import BitcoinTestFramework, BITCOIND_PROC_WAIT_TIMEOUT
+from test_framework.test_framework import SlemaniumTestFramework, SLEMANIUMD_PROC_WAIT_TIMEOUT
 from test_framework.util import (
     assert_equal,
     assert_raises_jsonrpc,
 )
 
-class WalletEncryptionTest(BitcoinTestFramework):
+class WalletEncryptionTest(SlemaniumTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -31,7 +31,7 @@ class WalletEncryptionTest(BitcoinTestFramework):
 
         # Encrypt the wallet
         self.nodes[0].encryptwallet(passphrase)
-        self.bitcoind_processes[0].wait(timeout=BITCOIND_PROC_WAIT_TIMEOUT)
+        self.slemaniumd_processes[0].wait(timeout=SLEMANIUMD_PROC_WAIT_TIMEOUT)
         self.nodes[0] = self.start_node(0, self.options.tmpdir)
 
         # Test that the wallet is encrypted

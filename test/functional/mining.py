@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2016 The Bitcoin Core developers
+# Copyright (c) 2014-2016 The Slemanium Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test mining RPCs
@@ -11,7 +11,7 @@ from binascii import b2a_hex
 import copy
 
 from test_framework.blocktools import create_coinbase
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import SlemaniumTestFramework
 from test_framework.mininode import CBlock
 from test_framework.util import *
 
@@ -24,7 +24,7 @@ def assert_template(node, block, expect, rehash=True):
     rsp = node.getblocktemplate({'data': b2x(block.serialize()), 'mode': 'proposal'})
     assert_equal(rsp, expect)
 
-class MiningTest(BitcoinTestFramework):
+class MiningTest(SlemaniumTestFramework):
 
     def __init__(self):
         super().__init__()

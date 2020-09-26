@@ -1,0 +1,8 @@
+/usr/bin/slemanium-cli		--	gen_context(system_u:object_r:slemanium_exec_t,s0)
+/usr/sbin/slemaniumd		--	gen_context(system_u:object_r:slemanium_exec_t,s0)
+/usr/lib(64)?/slemanium/slemaniumd		--	gen_context(system_u:object_r:slemanium_exec_t,s0)
+
+/etc/slemanium(/.*)?		gen_context(system_u:object_r:slemanium_conf_t,s0)
+/var/lib/slemanium(/.*)?		gen_context(system_u:object_r:slemanium_var_lib_t,s0)
+
+(/var)?/run/slemaniumd(/.*)?   gen_context(system_u:object_r:slemanium_var_run_t,s0)

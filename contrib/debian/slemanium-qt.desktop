@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Slemanium Core
+Comment=Connect to the Slemanium P2P Network
+Comment[de]=Verbinde mit dem Slemanium peer-to-peer Netzwerk
+Comment[fr]=Slemanium, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Slemanium, eşten eşe kriptografik sanal para birimi
+Exec=slemanium-qt %u
+Terminal=false
+Type=Application
+Icon=slemanium128
+MimeType=x-scheme-handler/slemanium;
+Categories=Office;Finance;

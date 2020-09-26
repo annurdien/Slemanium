@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
-CentOS:  bitcoind.init
-OS X:    org.bitcoin.bitcoind.plist
+SystemD: slemaniumd.service
+Upstart: slemaniumd.conf
+OpenRC:  slemaniumd.openrc
+         slemaniumd.openrcconf
+CentOS:  slemaniumd.init
+OS X:    org.slemanium.slemaniumd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

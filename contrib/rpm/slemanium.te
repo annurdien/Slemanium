@@ -1,0 +1,81 @@
+policy_module(slemanium, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type slemanium_t;
+type slemanium_exec_t;
+init_daemon_domain(slemanium_t, slemanium_exec_t)
+
+permissive slemanium_t;
+
+type slemanium_initrc_exec_t;
+init_script_file(slemanium_initrc_exec_t)
+
+type slemanium_conf_t;
+files_type(slemanium_conf_t)
+
+type slemanium_var_lib_t;
+files_type(slemanium_var_lib_t)
+
+type slemanium_var_run_t;
+files_type(slemanium_var_run_t)
+
+type slemanium_port_t;
+corenet_port(slemanium_port_t)
+
+########################################
+#
+# slemanium local policy
+#
+allow slemanium_t self:process { fork };
+
+allow slemanium_t self:fifo_file rw_fifo_file_perms;
+allow slemanium_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(slemanium_t, slemanium_conf_t, slemanium_conf_t)
+manage_files_pattern(slemanium_t, slemanium_conf_t, slemanium_conf_t)
+
+manage_dirs_pattern(slemanium_t, slemanium_var_lib_t, slemanium_var_lib_t)
+manage_files_pattern(slemanium_t, slemanium_var_lib_t, slemanium_var_lib_t)
+files_var_lib_filetrans(slemanium_t, slemanium_var_lib_t, { dir file })
+
+manage_dirs_pattern(slemanium_t, slemanium_var_run_t, slemanium_var_run_t)
+manage_files_pattern(slemanium_t, slemanium_var_run_t, slemanium_var_run_t)
+
+sysnet_dns_name_resolve(slemanium_t)
+corenet_all_recvfrom_unlabeled(slemanium_t)
+
+allow slemanium_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(slemanium_t)
+corenet_tcp_sendrecv_generic_node(slemanium_t)
+corenet_tcp_sendrecv_all_ports(slemanium_t)
+corenet_tcp_bind_generic_node(slemanium_t)
+
+gen_require(`
+    type slemanium_port_t;
+')
+allow slemanium_t slemanium_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type slemanium_port_t;
+')
+allow slemanium_t slemanium_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(slemanium_t)
+
+files_read_etc_files(slemanium_t)
+
+miscfiles_read_localization(slemanium_t)
+
+sysnet_dns_name_resolve(slemanium_t)
+
+allow slemanium_t slemanium_exec_t:file execute_no_trans;
+allow slemanium_t self:process setsched;
+corecmd_exec_ls(slemanium_t)
+corenet_tcp_connect_http_port(slemanium_t)
+dev_read_urand(slemanium_t)
+fs_getattr_xattr_fs(slemanium_t)
+kernel_read_system_state(slemanium_t)

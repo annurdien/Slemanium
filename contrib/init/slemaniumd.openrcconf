@@ -1,0 +1,33 @@
+# /etc/conf.d/slemaniumd: config file for /etc/init.d/slemaniumd
+
+# Config file location
+#SLEMANIUMD_CONFIGFILE="/etc/slemanium/slemanium.conf"
+
+# What directory to write pidfile to?  (created and owned by $SLEMANIUMD_USER)
+#SLEMANIUMD_PIDDIR="/var/run/slemaniumd"
+
+# What filename to give the pidfile
+#SLEMANIUMD_PIDFILE="${SLEMANIUMD_PIDDIR}/slemaniumd.pid"
+
+# Where to write slemaniumd data (be mindful that the blockchain is large)
+#SLEMANIUMD_DATADIR="/var/lib/slemaniumd"
+
+# User and group to own slemaniumd process
+#SLEMANIUMD_USER="slemanium"
+#SLEMANIUMD_GROUP="slemanium"
+
+# Path to slemaniumd executable
+#SLEMANIUMD_BIN="/usr/bin/slemaniumd"
+
+# Nice value to run slemaniumd under
+#SLEMANIUMD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#SLEMANIUMD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for slemaniumd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+SLEMANIUMD_SIGTERM_TIMEOUT=60
